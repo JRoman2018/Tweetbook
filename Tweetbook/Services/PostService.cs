@@ -36,12 +36,6 @@ namespace Tweetbook.Services
 
         public async Task<bool> UpdatePostAsync(Post postToUpdate)
         {
-            var post = await GetPostByIdAsync(postToUpdate.Id);
-            if (post == null)
-            {
-                return false;
-            }
-
             _dataContext.Posts.Update(postToUpdate);
             var updated = await _dataContext.SaveChangesAsync();
             return updated > 0;
